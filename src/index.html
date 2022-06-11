@@ -245,9 +245,9 @@
 
     <script>
         // Jumlah produk
-        const jumlahProduk = JSON.parse(localStorage.getItem('products'));
+        const jumlahProduk = JSON.parse(localStorage.getItem('products')) || [];
         const produk = document.getElementById('produk');
-        produk.append(jumlahProduk.length || 0)
+        produk.append(jumlahProduk.length)
 
     </script>
 

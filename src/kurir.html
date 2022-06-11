@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Produk</title>
+    <title>Admin - Kurir</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -58,13 +58,13 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="product.html">
                     <i class="fas fa-fw fa-shopping-bag"></i>
                     <span>Produk</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="kurir.html">
                     <i class="fas fa-fw fa-truck"></i>
                     <span>Kurir</span></a>
@@ -107,7 +107,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Produk</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Kurir</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -119,23 +119,15 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Accordion -->
                                 <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                    <h6 class="m-0 font-weight-bold text-primary">Tambah Produk</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Tambah Kurir</h6>
                                 </a>
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse hide" id="collapseCardExample">
                                     <div class="card-body">
                                         <form>
                                             <div class="form-group">
-                                                <label for="namaProduk">Nama Produk</label>
-                                                <input type="text" class="form-control" id="namaProduk" placeholder="Masukkan Nama Produk" autocomplete="off" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="hargaProduk">Harga Produk</label>
-                                                <input type="number" class="form-control" id="hargaProduk" placeholder="Masukkan Harga Produk" autocomplete="off" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="stok">Stok Produk</label>
-                                                <input type="number" class="form-control" id="stok" placeholder="Masukkan Stok Produk" autocomplete="off" required>
+                                                <label for="namaKurir">Nama Kurir</label>
+                                                <input type="text" class="form-control" id="namaKurir" placeholder="Masukkan Nama Kurir" autocomplete="off" required>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
@@ -155,19 +147,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Produk</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">Kurir</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -176,22 +156,18 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nama Produk</th>
-                                                    <th>Harga Produk</th>
-                                                    <th>Stok Produk</th>
+                                                    <th>Nama Kurir</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nama Produk</th>
-                                                    <th>Harga Produk</th>
-                                                    <th>Stok Produk</th>
+                                                    <th>Nama Kurir</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </tfoot>
-                                            <tbody id="dataProduk">
+                                            <tbody id="dataKurir">
                                             </tbody>
                                         </table>
                                     </div>
@@ -250,16 +226,14 @@
 
     <script src="app.js"></script>
     <script>
-        // get data produk
-        getProduk();
+        // get data Kurir
+        getKurir();
 
-        // Add produk
+        // Add Kurir
         $('form').on('submit', function (e) {
             e.preventDefault();
-            const namaProduk = $('#namaProduk').val();
-            const hargaProduk = $('#hargaProduk').val();
-            const stok = $('#stok').val();
-            addProduk(namaProduk, hargaProduk, stok);
+            const namaKurir = $('#namaKurir').val();
+            addKurir(namaKurir);
 
             $('form')[0].reset();
         });

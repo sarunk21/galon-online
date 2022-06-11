@@ -65,19 +65,19 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="product.html">
+                <a class="nav-link" href="kurir.html">
                     <i class="fas fa-fw fa-truck"></i>
                     <span>Kurir</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="product.html">
+                <a class="nav-link" href="customer.html">
                     <i class="fas fa-fw fa-user-alt"></i>
                     <span>Customer</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="product.html">
+                <a class="nav-link" href="transaksi.html">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Transaksi</span></a>
             </li>
@@ -160,10 +160,10 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Customer    
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="kurir"></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="customer"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-truck fa-2x text-gray-300"></i>
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -178,10 +178,10 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Transaksi</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="transaksi">18</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="transaksi"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -248,6 +248,21 @@
         const jumlahProduk = JSON.parse(localStorage.getItem('products')) || [];
         const produk = document.getElementById('produk');
         produk.append(jumlahProduk.length)
+
+        // Jumlah kurir
+        const jumlahKurir = JSON.parse(localStorage.getItem('couriers')) || [];
+        const kurir = document.getElementById('kurir');
+        kurir.append(jumlahKurir.length)
+
+        // Jumlah customer
+        const jumlahCustomer = JSON.parse(localStorage.getItem('customers')) || [];
+        const customer = document.getElementById('customer');
+        customer.append(jumlahCustomer.length)
+
+        // Jumlah transaksi
+        const jumlahTransaksi = JSON.parse(localStorage.getItem('transactions')) || [];
+        const transaksi = document.getElementById('transaksi');
+        transaksi.append(jumlahTransaksi.length)
 
     </script>
 

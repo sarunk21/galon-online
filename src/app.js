@@ -1,6 +1,7 @@
 // All data
 const products = JSON.parse(localStorage.getItem('products')) || [];
 const couriers = JSON.parse(localStorage.getItem('couriers')) || [];
+const customers = JSON.parse(localStorage.getItem('customers')) || [];
 
 // Produk
 
@@ -140,3 +141,73 @@ const couriers = JSON.parse(localStorage.getItem('couriers')) || [];
         getKurir();
     }
 
+// Customer
+
+    // Add Customer
+    function addCustomer(nama, notelp, alamat, jarak) {
+        // Get last id
+        const data = JSON.parse(localStorage.getItem('customers'));
+        let id = 1;
+        if (data && data.length > 0) {
+            id = data[data.length - 1][0] + 1;
+        }
+
+        const newCustomer = [id, nama, notelp, alamat, jarak];
+        customers.push(newCustomer);
+
+        // Save to localstorage
+        localStorage.setItem('customers', JSON.stringify(customers));
+
+        // Refresh table
+        getCustomer();
+    }
+
+    // Get Customer
+    function getCustomer() {
+        const tableCustomer = $('#dataCustomer')
+
+        // Clear table
+        tableCustomer.html('');
+
+        // Get data from localstorage
+        const data = JSON.parse(localStorage.getItem('customers'));
+
+        if (data) {
+            // Loop data
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td>${item[0]}</td>
+                        <td>${item[1]}</td>
+                        <td>${item[2]}</td>
+                        <td>${item[3]}</td>
+                        <td>${item[4]}</td>
+                        <td class="text-center">
+                            <button class="btn btn-danger" onclick="deleteCustomer(${item[0]})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+                tableCustomer.append(row);
+            });
+        }
+    }
+
+    // Delete Customer
+    function deleteCustomer(id) {
+        if (confirm('Apakaah anda yakin?')) {
+            // Get data from localstorage
+            const data = JSON.parse(localStorage.getItem('customers'));
+    
+            // Find index
+            const index = data.findIndex(item => item[0] === id);
+    
+            // Delete data
+            data.splice(index, 1);
+    
+            // Save to localstorage
+            localStorage.setItem('customers', JSON.stringify(data));
+        }
+
+        // Refresh table
+        getCustomer();
+    }

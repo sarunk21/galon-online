@@ -9,249 +9,152 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Dashboard</title>
+    <title>Galonly SBL</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
+<style>
+    /* scrollbar width */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 6px;
+    }
+
+    /* scrollbar track */
+    ::-webkit-scrollbar-track {
+        background: #eee;
+    }
+
+    /* scrollbar handle */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #00d2ff;
+        background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
 <body id="page-top">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+    <!-- Header -->
+    <div style="background-color: #FFF7F1; height: 100vh;" class="position-relative">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Wrapper -->
+        <div class="container-fluid">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <!-- Navbar -->
+            <nav class="navbar py-5 px-5 d-flex justify-content-between align-items-end">
+                <div class="d-flex align-items-end font-weight-bolder" style="color: #0038FF; font-size: 28px;">
+                    <img src="assets/img/logo.svg" width="60" height="60" class="d-inline-block align-top" alt="Logo">
+                    Galonly SBL
                 </div>
-                <div class="sidebar-brand-text mx-3">Galonly SBL </div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Operational
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="product.html">
-                    <i class="fas fa-fw fa-shopping-bag"></i>
-                    <span>Produk</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="kurir.html">
-                    <i class="fas fa-fw fa-truck"></i>
-                    <span>Kurir</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="customer.html">
-                    <i class="fas fa-fw fa-user-alt"></i>
-                    <span>Customer</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="transaksi.html">
-                    <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Transaksi</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-        </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!--  -->
-
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Produk
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="produk"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-shopping-bag fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Kurir
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="kurir"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-truck fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Customer
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="customer"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Transaksi</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="transaksi"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="jumbotron">
-                                <h1 class="display-4">Hello, Admin!</h1>
-                                <p class="lead">Daftar pengantaran customer berdasarkan jarak</p>
-                                <hr class="my-4">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nama Customer</th>
-                                                <th>No Telepon</th>
-                                                <th>Alamat</th>
-                                                <th>Jarak</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nama Customer</th>
-                                                <th>No Telepon</th>
-                                                <th>Alamat</th>
-                                                <th>Jarak</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody id="sortedCustomer">
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="d-flex justify-content-end mt-3">
-                                    <button onclick="getTotalCustomer()" class="btn btn-info ml-3">Jumlah Customer</button>
-                                    <button onclick="getFirstCustomer()" class="btn btn-info ml-3">Customer Yang Pertama Diantar</button>
-                                    <button onclick="getLastCustomer()" class="btn btn-info ml-3">Customer Yang Terakhir Diantar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="font-weight-bold" style="font-size: 18px;">
+                    <a href="#produk" class="px-5" style="color: #000000;">Produk</a>
+                    <a href="#tentang" class="px-5" style="color: #000000;">Tentang</a>
+                    <a href="#layanan" class="px-5" style="color: #000000;">Layanan</a>
                 </div>
-                <!-- /.container-fluid -->
+                <a href="" class="font-weight-bold" style="font-size: 18px; color: #000000;">Order Here <i class="fa fa-arrow-right"></i></a>
+            </nav>
+
+            <!-- Hero -->
+            <div class="d-flex px-5 mt-5">
+                <div class="d-flex flex-column justify-content-around" style="width: 40%;">
+                    <h1 class="font-weight-bolder" style="color: #000000; font-size: 48px;">Mempermudah kamu untuk menemukan air</h1>
+                    <p class="font-weight-bold text-justify mt-2" style="color: #000; font-size: 18px;">Sebuah perusahaan yang bergerak di bidang distribusi air mineral yang menyediakan segala merk apapun dan bisa isi ulang </p>
+                    <img src="assets/img/logo-galon.png" alt="Logo Galon" class="mt-5">
+                </div>
+
+                <!-- Hero Image -->
+                <img src="assets/img/hero.png" class="position-absolute" style="right: 0; bottom: 0; height: 65%;" alt="Hero Image">
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Galonly SBL 2022</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
+    <!-- Our Product -->
+    <div class="container-fluid px-5" style="margin-top: 80px; color: #000000;" id="produk">
+        <h1 class="font-weight-bolder">Produk</h1>
+
+        <div class="w-100 overflow-auto scrollbar-primary my-5">
+            <div class="d-inline-flex">
+                <div class="card shadow d-flex flex-column justify-content-center px-3 py-1" style="width: 30%; border-radius: 12px;">
+                    <img src="assets/img/galon-1.png" alt="Galon 1">
+                    <h5 class="font-weight-bold mt-2" style="color: #777777;">Aqua Galon Air Mineral 1900 ml (Galon + isi) </h5>
+                    <p class="font-weight-bold">Rp. 100.000</p>
+                </div>
+                <div class="card shadow d-flex flex-column justify-content-center px-3 py-1 ml-5" style="width: 30%; border-radius: 12px;">
+                    <img src="assets/img/galon-2.png" alt="Galon 2">
+                    <h5 class="font-weight-bold mt-2" style="color: #777777;">Le minerale Galon Air Mineral 1900 ml (Galon + isi)</h5>
+                    <p class="font-weight-bold">Rp. 200.000</p>
+                </div>
+                <div class="card shadow d-flex flex-column justify-content-center px-3 py-1 ml-5" style="width: 30%; border-radius: 12px;">
+                    <img src="assets/img/galon-3.png" alt="Galon 3">
+                    <h5 class="font-weight-bold mt-2" style="color: #777777;">Cleo Galon Air Mineral 1900 ml (Galon + isi)</h5>
+                    <p class="font-weight-bold">Rp. 200.000</p>
+                </div>
+                <div class="card shadow d-flex flex-column justify-content-center px-3 py-1 ml-5" style="width: 30%; border-radius: 12px;">
+                    <img src="assets/img/galon-4.png" alt="Galon 4">
+                    <h5 class="font-weight-bold mt-2" style="color: #777777;">Club Galon Air Mineral 1900 ml (Galon + isi)</h5>
+                    <p class="font-weight-bold">Rp. 200.000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div class="container-fluid px-5" style="margin-top: 80px; color: #000000;" id="tentang">
+        <h1 class="font-weight-bolder">Tentang</h1>
+
+        <div class="my-5 d-flex align-items-center">
+            <img src="assets/img/hero-2.png" alt="Hero 2" class="w-50">
+            <p class="text-justify font-weight-bold w-50 px-5" style="font-size: 24px;">Kami bergerak dibidang distribusi air dan air minum isi ulang layak minum, saat ini produk kami sudah memiliki sertifikasi dari lab PAM JAYA, dan produk kami saat ini sudah dipakai oleh berberapa perusahaan dan masyarakat umum.</p>
+        </div>
+
+    </div>
+    
+    <!-- Layanan -->
+    <div class="container-fluid px-5" style="margin-top: 80px; color: #000000;" id="layanan">
+        <h1 class="font-weight-bolder">Layanan</h1>
+
+        <div class="my-5 d-flex align-items-center justify-content-between">
+            <img src="assets/img/layanan-1.png" alt="Layanan 1" class="w-100 pr-5">
+            <img src="assets/img/layanan-2.png" alt="Layanan 2" class="w-100 pl-5">
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="d-flex align-items-center" style="background-color: #0036F8; height: 40vh; color: #FFFFFF; margin-top: 200px;">
+
+        <!-- Wrapper -->
+        <div class="container-fluid p-5">
+            <div class="d-flex align-items-center justify-content-between text-center">
+                <div>
+                    <img src="assets/img/logo-footer.png" alt="">
+                    <p class="mt-4"><i class="fa fa-map-marked mr-2"></i> Jalan RS. Fatmawati No.1</p>
+                </div>
+                <div class="d-flex w-100 justify-content-center">
+                    <a href="#produk" class="font-weight-bold mx-5" style="font-size: 24px; color: #fff;">Produk</a>
+                    <a href="#tentang" class="font-weight-bold mx-5" style="font-size: 24px; color: #fff;">Tentang</a>
+                    <a href="#layanan" class="font-weight-bold mx-5" style="font-size: 24px; color: #fff;">Layanan</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
@@ -265,31 +168,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
-
-    <script src="app.js"></script>
-
-    <script>
-        // Jumlah produk
-        const jumlahProduk = JSON.parse(localStorage.getItem('products')) || [];
-        const produk = document.getElementById('produk');
-        produk.append(jumlahProduk.length)
-
-        // Jumlah kurir
-        const jumlahKurir = JSON.parse(localStorage.getItem('couriers')) || [];
-        const kurir = document.getElementById('kurir');
-        kurir.append(jumlahKurir.length)
-
-        // Jumlah customer
-        const jumlahCustomer = JSON.parse(localStorage.getItem('customers')) || [];
-        const customer = document.getElementById('customer');
-        customer.append(jumlahCustomer.length)
-
-        // Jumlah transaksi
-        const jumlahTransaksi = JSON.parse(localStorage.getItem('transactions')) || [];
-        const transaksi = document.getElementById('transaksi');
-        transaksi.append(jumlahTransaksi.length)
-
-    </script>
 
 </body>
 

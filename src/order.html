@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Galonly SBL</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<style>
+    /* scrollbar width */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 6px;
+    }
+
+    /* scrollbar track */
+    ::-webkit-scrollbar-track {
+        background: #eee;
+    }
+
+    /* scrollbar handle */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #00d2ff;
+        background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<body id="page-top">
+
+    <!-- Header -->
+    <div style="height: 100vh;">
+
+        <!-- Wrapper -->
+        <div class="container-fluid">
+
+            <!-- Navbar -->
+            <nav class="navbar py-5 px-5 d-flex justify-content-between align-items-end">
+                <div class="d-flex align-items-end font-weight-bolder" style="color: #0038FF; font-size: 28px;">
+                    <img src="assets/img/logo.svg" width="60" height="60" class="d-inline-block align-top" alt="Logo">
+                    Galonly SBL
+                </div>
+                <div class="font-weight-bold" style="font-size: 18px;">
+                    <a href="index.html#produk" class="px-5" style="color: #000000;">Produk</a>
+                    <a href="index.html#tentang" class="px-5" style="color: #000000;">Tentang</a>
+                    <a href="index.html#layanan" class="px-5" style="color: #000000;">Layanan</a>
+                </div>
+                <a href="order.html" class="font-weight-bold" style="font-size: 18px; color: #000000;">Order Here <i class="fa fa-arrow-right"></i></a>
+            </nav>
+
+            <!-- Form -->
+            <div class="row py-5 px-5">
+                <div class="col-6">
+                    <img src="assets/img/order.png" alt="">
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                    <form class="w-100 font-weight-bolder" style="color: #000;">
+                        <div class="form-group">
+                            <label for="id_customer">Nama Customer</label>
+                            <select class="form-control" id="id_customer" required>
+                                <option selected disabled>Pilih Customer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_kurir">Nama Kurir</label>
+                            <select class="form-control" id="id_kurir" required>
+                                <option selected disabled>Pilih Kurir</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_produk">Nama Produk</label>
+                            <select class="form-control" id="id_produk" required>
+                                <option selected disabled>Pilih Produk</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="jumlah">Jumlah</label>
+                            <input type="number" class="form-control" id="jumlah" required placeholder="Masukkan Jumlah Produk">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="assets/js/sb-admin-2.min.js"></script>
+
+    <script src="app.js"></script>
+    <script>
+        // Get data customer
+        const customerData = JSON.parse(localStorage.getItem('customers'));
+        const selectCustomer = $('#id_customer');
+
+        customerData.forEach(customer => {
+            selectCustomer.append(`
+                <option value="${customer[0]}">${customer[1]}</option>
+            `);
+        });
+
+        // Get data kurir
+        const kurirData = JSON.parse(localStorage.getItem('couriers'));
+        const selectKurir = $('#id_kurir');
+
+        kurirData.forEach(kurir => {
+            selectKurir.append(`
+                <option value="${kurir[0]}">${kurir[1]}</option>
+            `);
+        });
+
+        // Get data produk
+        const produkData = JSON.parse(localStorage.getItem('products'));
+        const selectProduk = $('#id_produk');
+
+        produkData.forEach(produk => {
+            selectProduk.append(`
+                <option value="${produk[0]}">${produk[1]}</option>
+            `);
+        });
+
+        // Add Transaksi
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            const id_customer = $('#id_customer').val();
+            const id_kurir = $('#id_kurir').val();
+            const id_produk = $('#id_produk').val();
+            const jumlah = $('#jumlah').val();
+
+            // Cek stok produk
+            const cekProduk = produkData.filter(produk => produk[0] == id_produk);
+            console.log(cekProduk);
+
+            if (jumlah > cekProduk[0][3]) {
+                return alert('Stok tidak mencukupi');
+            }
+
+            addTransaksi(id_customer, id_kurir, id_produk, jumlah);
+
+            alert('Transaksi berhasil');
+
+            $('form')[0].reset();
+        });
+    </script>
+
+</body>
+
+</html>
